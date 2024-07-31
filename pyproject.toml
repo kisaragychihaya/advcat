@@ -1,0 +1,44 @@
+[project]
+name = "advcat"
+dynamic = ["dependencies","version"]
+readme = "README.md"
+requires-python = ">=3.8"
+description = 'A DocTools'
+license= { "text" = "MIT" }
+keywords = ['Toolkit']
+authors = [
+    { name = "DrEgg" }
+]
+maintainers = [
+    { name = "DrEgg" }
+]
+classifiers = [
+        'Programming Language :: Python :: 3',
+        'Programming Language :: Python :: 3.8',
+        'Programming Language :: Python :: 3.9',
+        'Programming Language :: Python :: 3.10',
+        'Programming Language :: Python :: 3.11',
+        'Topic :: Software Development',
+        'Operating System :: POSIX :: Linux',
+        "License :: OSI Approved :: MIT License",
+        'Operating System :: Microsoft :: Windows', ]
+
+[build-system]
+requires = ["setuptools>=40.8.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.pip-compile.optional-dependencies]
+
+openai = [
+        'openai'
+]
+
+[tool.setuptools.dynamic]
+dependencies = { file = ["./requirements.txt"] }
+version = { attr = "abaaba.__version__" }
+
+# [project.scripts]
+# "abaaba" = "abaaba.cli"
+
+[tool.setuptools]  # configuration specific to the `setuptools` build backend.
+packages ={ find = { where = ["."], include = ["advcat", "advcat.*"] } }# ["yiku", "yiku.*"]
